@@ -10,10 +10,22 @@
     <Setting Name="Command2" Type="System.String" Scope="User" Roaming="false">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Command3" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Command4" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
     <Setting Name="Program1" Type="System.String" Scope="User" Roaming="false">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Program2" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Program3" Type="System.String" Scope="User" Roaming="false">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Program4" Type="System.String" Scope="User" Roaming="false">
       <Value Profile="(Default)" />
     </Setting>
   </Settings>

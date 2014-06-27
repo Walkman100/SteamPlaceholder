@@ -79,6 +79,30 @@ Namespace My
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Command3() As String
+            Get
+                Return CType(Me("Command3"),String)
+            End Get
+            Set
+                Me("Command3") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Command4() As String
+            Get
+                Return CType(Me("Command4"),String)
+            End Get
+            Set
+                Me("Command4") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
         Public Property Program1() As String
             Get
                 Return CType(Me("Program1"),String)
@@ -97,6 +121,30 @@ Namespace My
             End Get
             Set
                 Me("Program2") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Program3() As String
+            Get
+                Return CType(Me("Program3"),String)
+            End Get
+            Set
+                Me("Program3") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property Program4() As String
+            Get
+                Return CType(Me("Program4"),String)
+            End Get
+            Set
+                Me("Program4") = value
             End Set
         End Property
     End Class

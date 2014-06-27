@@ -3,22 +3,19 @@ Imports System.IO
 Imports System.Threading
 
 Public Class SteamPlaceholder
-    'Dim Total As Long, a As Long, b As Long, c As Long, i As Long, x As Long
-    'Dim TempA As Long, TempB As Long, TempC As Long
-    'Dim TextVar As String, TextVar2 As String
 
-    Private Sub EulerSolutions_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'ProblemChooser.Value = My.Settings.CurrentProblem
-        'lblProblemNumber.Text = My.Settings.CurrentProblem
-        'ToolStripProblemNumber.Text = My.Settings.CurrentProblem
-    End Sub
-    
     Dim ProgArg As String = ""
     
-    Private Sub LoadYTVL() Handles Me.Load
+    Private Sub LoadSteamPlaceHolder() Handles Me.Load
         'fill GUI elements
         txtCommand1.Text = My.Settings.Command1
         txtProgram1.Text = My.Settings.Program1
+        txtCommand2.Text = My.Settings.Command2
+        txtProgram2.Text = My.Settings.Program2
+        txtCommand3.Text = My.Settings.Command3
+        txtProgram3.Text = My.Settings.Program3
+        txtCommand4.Text = My.Settings.Command4
+        txtProgram4.Text = My.Settings.Program4
         
         'get CommandLineArgs, copy them to a variable or apply them
         For Each s As String In My.Application.CommandLineArgs
@@ -28,43 +25,89 @@ Public Class SteamPlaceholder
                 ProgArg = s
             End If
         Next
+        
+        'check if an argument is in the GUI, and if so, launch the specified file
         If ProgArg <> "" Then
             If ProgArg.Contains(txtCommand1.Text) And txtCommand1.Text <> "" And txtProgram1.Text <> "" Then
                 Process.Start(txtProgram1.Text)
-            'ElseIf  ProgArg.Contains(txtCommand2.Text) And txtCommand2.Text <> "" And txtProgram2.Text <> "" Then
-            '    Process.Start(txtProgram2.Text)
-            'ElseIf  ProgArg.Contains(txtCommand3.Text) And txtCommand3.Text <> "" And txtProgram3.Text <> "" Then
-            '    Process.Start(txtProgram3.Text)
-            'ElseIf  ProgArg.Contains(txtCommand4.Text) And txtCommand4.Text <> "" And txtProgram4.Text <> "" Then
-            '    Process.Start(txtProgram4.Text)
+            ElseIf  ProgArg.Contains(txtCommand2.Text) And txtCommand2.Text <> "" And txtProgram2.Text <> "" Then
+                Process.Start(txtProgram2.Text)
+            ElseIf  ProgArg.Contains(txtCommand3.Text) And txtCommand3.Text <> "" And txtProgram3.Text <> "" Then
+                Process.Start(txtProgram3.Text)
+            ElseIf  ProgArg.Contains(txtCommand4.Text) And txtCommand4.Text <> "" And txtProgram4.Text <> "" Then
+                Process.Start(txtProgram4.Text)
             End If
         End If
     End Sub
     
+    'Close Program
+    Sub BtnEndClick(sender As Object, e As EventArgs)
+        End
+    End Sub
+    
+    'Save settings
+    Sub BtnSaveClick(sender As Object, e As EventArgs)
+        My.Settings.Command1 = txtCommand1.Text
+        My.Settings.Program1 = txtProgram1.Text
+        My.Settings.Command2 = txtCommand2.Text
+        My.Settings.Program2 = txtProgram2.Text
+        My.Settings.Command3 = txtCommand3.Text
+        My.Settings.Program3 = txtProgram3.Text
+        My.Settings.Command4 = txtCommand4.Text
+        My.Settings.Program4 = txtProgram4.Text
+        My.Settings.Save
+        lblSaved.Visible = True
+        timerSave.Start
+    End Sub
+    
+    'Hide "Saved succesfully" text
+    Sub TimerSaveTick(sender As Object, e As EventArgs)
+        timerSave.Stop
+        'WindowState = FormWindowState.Minimized
+        lblSaved.Visible = False
+    End Sub
+    
     Sub BtnBrowse1Click(sender As Object, e As EventArgs)
         openFileDialogBrowse.ShowDialog
-        txtProgram1.Text = openFileDialogBrowse.FileName
+        If openFileDialogBrowse.FileName <> "" Then
+            txtProgram1.Text = openFileDialogBrowse.FileName
+        End If
     End Sub
     
     Sub BtnRun1Click(sender As Object, e As EventArgs)
         Process.Start(txtProgram1.Text)
     End Sub
     
-    Sub BtnEndClick(sender As Object, e As EventArgs)
-        End
+    Sub BtnBrowse2Click(sender As Object, e As EventArgs)
+        openFileDialogBrowse.ShowDialog
+        If openFileDialogBrowse.FileName <> "" Then
+            txtProgram2.Text = openFileDialogBrowse.FileName
+        End If
     End Sub
     
-    Sub BtnSaveClick(sender As Object, e As EventArgs)
-        My.Settings.Command1 = txtCommand1.Text
-        My.Settings.Program1 = txtProgram1.Text
-        My.Settings.Save
-        lblSaved.Visible = True
-        timerSave.Start
+    Sub BtnRun2Click(sender As Object, e As EventArgs)
+        Process.Start(txtProgram2.Text)
     End Sub
     
-    Sub TimerSaveTick(sender As Object, e As EventArgs)
-        timerSave.Stop
-        WindowState = FormWindowState.Minimized
-        lblSaved.Visible = False
+    Sub BtnBrowse3Click(sender As Object, e As EventArgs)
+        openFileDialogBrowse.ShowDialog
+        If openFileDialogBrowse.FileName <> "" Then
+            txtProgram3.Text = openFileDialogBrowse.FileName
+        End If
+    End Sub
+    
+    Sub BtnRun3Click(sender As Object, e As EventArgs)
+        Process.Start(txtProgram3.Text)
+    End Sub
+    
+    Sub BtnBrowse4Click(sender As Object, e As EventArgs)
+        openFileDialogBrowse.ShowDialog
+        If openFileDialogBrowse.FileName <> "" Then
+            txtProgram4.Text = openFileDialogBrowse.FileName
+        End If
+    End Sub
+    
+    Sub BtnRun4Click(sender As Object, e As EventArgs)
+        Process.Start(txtProgram4.Text)
     End Sub
 End Class
