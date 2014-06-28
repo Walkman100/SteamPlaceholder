@@ -75,7 +75,11 @@ Public Class SteamPlaceholder
     End Sub
     
     Sub BtnRun1Click(sender As Object, e As EventArgs)
-        Process.Start(txtProgram1.Text)
+        If File.Exists(txtProgram1.Text) Then
+            Process.Start(txtProgram1.Text)
+        Else
+            MsgBox("The program '" & txtProgram1.Text & "'" & "could not be found!", MsgBoxStyle.Critical)
+        End If
     End Sub
     
     Sub BtnBrowse2Click(sender As Object, e As EventArgs)
@@ -86,7 +90,11 @@ Public Class SteamPlaceholder
     End Sub
     
     Sub BtnRun2Click(sender As Object, e As EventArgs)
-        Process.Start(txtProgram2.Text)
+        If File.Exists(txtProgram2.Text) Then
+            Process.Start(txtProgram2.Text)
+        Else
+            MsgBox("The program '" & txtProgram2.Text & "'" & "could not be found!", MsgBoxStyle.Critical)
+        End If
     End Sub
     
     Sub BtnBrowse3Click(sender As Object, e As EventArgs)
@@ -97,7 +105,11 @@ Public Class SteamPlaceholder
     End Sub
     
     Sub BtnRun3Click(sender As Object, e As EventArgs)
-        Process.Start(txtProgram3.Text)
+        If File.Exists(txtProgram3.Text) Then
+            Process.Start(txtProgram3.Text)
+        Else
+            MsgBox("The program '" & txtProgram3.Text & "'" & "could not be found!", MsgBoxStyle.Critical)
+        End If
     End Sub
     
     Sub BtnBrowse4Click(sender As Object, e As EventArgs)
@@ -108,6 +120,10 @@ Public Class SteamPlaceholder
     End Sub
     
     Sub BtnRun4Click(sender As Object, e As EventArgs)
-        Process.Start(txtProgram4.Text)
+        If File.Exists(txtProgram4.Text) Then
+            Process.Start(txtProgram4.Text)
+        Else
+            MsgBox("The program '" & txtProgram4.Text & "'" & "could not be found!", MsgBoxStyle.Critical)
+        End If
     End Sub
 End Class
