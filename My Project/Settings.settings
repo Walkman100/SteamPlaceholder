@@ -1,32 +1,33 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<SettingsFile CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true" xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
   <Settings>
-    <Setting Name="Command1" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Command1" Type="System.String" Scope="User">
       <Value Profile="(Default)">start</Value>
     </Setting>
-    <Setting Name="Command2" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Command2" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Command3" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Command3" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Command4" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Command4" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Program1" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Program1" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Program2" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Program2" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Program3" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Program3" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="Program4" Type="System.String" Scope="User" Roaming="false">
+    <Setting Name="Program4" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CurrentProblem" Type="System.String" Scope="User">
+      <Value Profile="(Default)">11</Value>
     </Setting>
   </Settings>
 </SettingsFile>
