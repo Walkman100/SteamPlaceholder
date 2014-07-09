@@ -1,5 +1,5 @@
-SteamPlaceholder
-================
+SteamPlaceholder [![Build status](https://ci.appveyor.com/api/projects/status/y315rvdlio5tp8yi)](https://ci.appveyor.com/project/Walkman100/steamplaceholder)
+===========================
 
 A program that you can point Steam to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
 
