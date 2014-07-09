@@ -15,7 +15,7 @@
     <NoWin32Manifest>False</NoWin32Manifest>
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
-    <ApplicationIcon>..\..\..\..\..\ProgramFiles\Steam\steam.ico</ApplicationIcon>
+    <ApplicationIcon>My Project\steam.ico</ApplicationIcon>
     <SignAssembly>False</SignAssembly>
     <DelaySign>False</DelaySign>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
