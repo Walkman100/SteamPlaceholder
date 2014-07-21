@@ -16,3 +16,6 @@ The `GameOverlayUI.exe` process that launches and attaches to games & programs l
 I developed this program because I have a game that crashes if it is opened from Steam, presumably since it doesn't support the Steam overlay. If I start my game from this app after it has been launched from Steam, the game will crash, so I have to start it seperately from this app.
 
 It can be a good thing since if you replace the executable of a Steam game with this app (don't delete the original exe), and use it as e.g. a mod launcher, so you can pick which one you want with the Steam overlay still functional.
+
+## Donate
+[Show your support!](http://walkman100.github.io\Walkman\HTML\Donate.html)
