@@ -18,4 +18,4 @@ I developed this program because I have a game that crashes if it is opened from
 It can be a good thing since if you replace the executable of a Steam game with this app (don't delete the original exe), and use it as e.g. a mod launcher, so you can pick which one you want with the Steam overlay still functional.
 
 ## Donate
-[Show your support!](http://walkman100.github.io\Walkman\HTML\Donate.html)
+[Show your support!](http://walkman100.github.io/Walkman/HTML/Donate.html)
