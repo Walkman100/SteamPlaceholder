@@ -21,7 +21,7 @@ Public Class SteamPlaceholder
         For Each s As String In My.Application.CommandLineArgs
             If s = "hideGUI" Or s = "hidegui" Then
                 WindowState = FormWindowState.Minimized
-            ElseIf s <> "hideGUI"
+            ElseIf s <> "hideGUI" Then
                 ProgArg = s
             End If
         Next
