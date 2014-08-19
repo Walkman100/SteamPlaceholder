@@ -1,6 +1,6 @@
 # SteamPlaceholder [![Build status](https://ci.appveyor.com/api/projects/status/y315rvdlio5tp8yi)](https://ci.appveyor.com/project/Walkman100/steamplaceholder)
 
-A program that you can point Steam to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
+A program that you can point [Steam](http://store.steampowered.com/) to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
 
 Please note that if it is passed multiple parameters that are not `hideGUI` or `hidegui`, then it will only run the last argument passed to it.
 
