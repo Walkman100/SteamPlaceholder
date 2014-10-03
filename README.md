@@ -1,4 +1,5 @@
 # SteamPlaceholder [![Build status](https://ci.appveyor.com/api/projects/status/y315rvdlio5tp8yi)](https://ci.appveyor.com/project/Walkman100/steamplaceholder)
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/SteamPlaceholder?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 A program that you can point [Steam](http://store.steampowered.com/) to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
 
