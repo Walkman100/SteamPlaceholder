@@ -12,9 +12,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("Steam Placeholder")> 
 <Assembly: AssemblyDescription("Placeholder that launches other programs on startup")> 
-<Assembly: AssemblyCompany("Walkman")> 
+<Assembly: AssemblyCompany("DeavmiOSS")> 
 <Assembly: AssemblyProduct("Steam Placeholder")> 
-<Assembly: AssemblyCopyright("Copyright © Walkman 2014")> 
+<Assembly: AssemblyCopyright("FOSS from Walkman")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>
