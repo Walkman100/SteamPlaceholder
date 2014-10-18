@@ -5,7 +5,7 @@ Imports System.Threading
 Public Class SteamPlaceholder
 
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
-        ' fill gui
+        ' fill gui: lstCommands.Items = My.Settings.Paths
         For i = 0 To My.Settings.Paths.Count
             lstCommands.Items.Add(My.Settings.Paths.Item(i))
         Next
@@ -18,6 +18,7 @@ Public Class SteamPlaceholder
             Else
                 If lstCommands.Items.Contains(s) Then
                     If File.Exists(lstCommands.Items.Item(s)) Then
+                        ' Not sure if this is going to work.
                         Process.Start(lstCommands.Items.Item(s))
                     Else
                         MsgBox("The program '" & lstCommands.Items.Item(s) & "' " & "could not be found!", MsgBoxStyle.Critical)
@@ -25,33 +26,13 @@ Public Class SteamPlaceholder
                 End If
             End If
         Next
-
-        ''check if an argument is in the GUI, and if so, launch the specified file
-        'If ProgArg <> "" Then
-        '    If ProgArg.Contains(txtCommand1.Text) And txtCommand1.Text <> "" And txtProgram1.Text <> "" Then
-        '        Process.Start(txtProgram1.Text)
-        '    ElseIf  ProgArg.Contains(txtCommand2.Text) And txtCommand2.Text <> "" And txtProgram2.Text <> "" Then
-        '        Process.Start(txtProgram2.Text)
-        '    ElseIf  ProgArg.Contains(txtCommand3.Text) And txtCommand3.Text <> "" And txtProgram3.Text <> "" Then
-        '        Process.Start(txtProgram3.Text)
-        '    ElseIf  ProgArg.Contains(txtCommand4.Text) And txtCommand4.Text <> "" And txtProgram4.Text <> "" Then
-        '        Process.Start(txtProgram4.Text)
-        '    End If
-        'End If
     End Sub
     
-    'Close Program
-    Sub BtnEndClick(sender As Object, e As EventArgs) Handles btnEnd.Click
+    Private Sub btnEnd_Click(sender As Object, e As EventArgs) Handles btnEnd.Click
         Application.Exit()
     End Sub
     
-    'Save settings
-    Sub BtnSaveClick(sender As Object, e As EventArgs)
-        
-        'My.Settings.Save()
-    End Sub
-    
-    Sub BtnBrowseClick(sender As Object, e As EventArgs) Handles btnBrowse.Click
+    Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
         openFileDialogBrowse.ShowDialog()
         If openFileDialogBrowse.FileName <> "" Then
             txtArgs.Text = openFileDialogBrowse.FileName
@@ -59,7 +40,7 @@ Public Class SteamPlaceholder
         End If
     End Sub
 
-    Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
+    Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
         If lstCommands.SelectedIndex = -1 Then
             MsgBox("No item selected")
         Else
@@ -110,12 +91,17 @@ Public Class SteamPlaceholder
         btnTest.Enabled = True
     End Sub
 
-    Private Sub lstCommands_Click(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged
+    Private Sub lstCommands_Changed(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged, lstCommands.SelectedValueChanged
         If lstCommands.SelectedIndex = -1 Then
             txtArgs.Text = ""
         Else
             txtArgs.Text = lstCommands.SelectedItem
         End If
+        'My.Settings.Paths = lstCommands.Items
+        My.Settings.Paths.Clear()
+        For i = 0 To lstCommands.Items.Count - 1
+            My.Settings.Paths.Add(lstCommands.Items.Item(i))
+        Next
     End Sub
 
     Private Sub txtArgs_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtArgs.KeyPress
