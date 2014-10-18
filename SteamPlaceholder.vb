@@ -7,15 +7,8 @@ Public Class SteamPlaceholder
     'Dim ProgArg As String = ""
     
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
-        ''fill GUI elements
-        'txtCommand1.Text = My.Settings.Command1
-        'txtProgram1.Text = My.Settings.Program1
-        'txtCommand2.Text = My.Settings.Command2
-        'txtProgram2.Text = My.Settings.Program2
-        'txtCommand3.Text = My.Settings.Command3
-        'txtProgram3.Text = My.Settings.Program3
-        'txtCommand4.Text = My.Settings.Command4
-        'txtProgram4.Text = My.Settings.Program4
+        lstCommands.Items.Add("C:\Windows\notepad.exe")
+        lstCommands.SelectedIndex = 0
 
         ''get CommandLineArgs, copy them to a variable or apply them
         'For Each s As String In My.Application.CommandLineArgs
@@ -47,28 +40,15 @@ Public Class SteamPlaceholder
     
     'Save settings
     Sub BtnSaveClick(sender As Object, e As EventArgs)
-        'My.Settings.Command1 = txtCommand1.Text
-        'My.Settings.Program1 = txtProgram1.Text
-        'My.Settings.Command2 = txtCommand2.Text
-        'My.Settings.Program2 = txtProgram2.Text
-        'My.Settings.Command3 = txtCommand3.Text
-        'My.Settings.Program3 = txtProgram3.Text
-        'My.Settings.Command4 = txtCommand4.Text
-        'My.Settings.Program4 = txtProgram4.Text
+        
         'My.Settings.Save()
-        'lblSaved.Visible = True
-        'timerSave.Start()
-    End Sub
-    
-    'Hide "Saved succesfully" text
-    Sub TimerSaveTick(sender As Object, e As EventArgs) Handles timerSave.Tick
-        timerSave.Stop()
     End Sub
     
     Sub BtnBrowseClick(sender As Object, e As EventArgs) Handles btnBrowse.Click
         openFileDialogBrowse.ShowDialog()
         If openFileDialogBrowse.FileName <> "" Then
             txtArgs.Text = openFileDialogBrowse.FileName
+            txtArgs_KeyPress(Nothing, Nothing)
         End If
     End Sub
 
@@ -89,7 +69,7 @@ Public Class SteamPlaceholder
             MsgBox("Nothing to add!")
         Else
             lstCommands.Items.Add(txtArgs.Text)
-            txtArgs.Text = ""
+            ' txtArgs.Text = ""
         End If
     End Sub
 
@@ -103,14 +83,21 @@ Public Class SteamPlaceholder
 
     Private Sub btnRebuild_Click(sender As Object, e As EventArgs) Handles btnRebuild.Click
         lstCommands.Items.Clear()
-        lstCommands.Items.Add("start")
+        lstCommands.Items.Add("C:\Windows\notepad.exe")
+        lstCommands.SelectedIndex = 0
     End Sub
 
-    Private Sub lstCommands_Click(sender As Object, e As EventArgs) Handles lstCommands.Click
+    Private Sub lstCommands_Click(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged
         If lstCommands.SelectedIndex = -1 Then
             txtArgs.Text = ""
         Else
             txtArgs.Text = lstCommands.SelectedItem
+        End If
+    End Sub
+
+    Private Sub txtArgs_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtArgs.KeyPress
+        If Not lstCommands.SelectedIndex = -1 Then
+            lstCommands.Items.Item(lstCommands.SelectedIndex) = txtArgs.Text
         End If
     End Sub
 End Class
