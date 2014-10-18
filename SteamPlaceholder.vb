@@ -68,8 +68,17 @@ Public Class SteamPlaceholder
         If txtArgs.Text = "" Then
             MsgBox("Nothing to add!")
         Else
-            lstCommands.Items.Add(txtArgs.Text)
-            ' txtArgs.Text = ""
+            If 0 <> 0 Then
+                ' Inserts at the end of list
+                lstCommands.Items.Add(txtArgs.Text)
+                lstCommands.SelectedIndex = lstCommands.Items.Count - 1
+            Else
+                ' Inserts just after selected item
+                lstCommands.Items.Insert(lstCommands.SelectedIndex + 1, txtArgs.Text)
+                lstCommands.SelectedIndex = lstCommands.SelectedIndex + 1
+            End If
+            btnRemove.Enabled = True
+            btnTest.Enabled = True
         End If
     End Sub
 
@@ -77,7 +86,12 @@ Public Class SteamPlaceholder
         If lstCommands.SelectedIndex = -1 Then
             MsgBox("No item selected")
         Else
-            lstCommands.Items.RemoveAt(lstCommands.SelectedIndex)
+            lstCommands.SelectedIndex = lstCommands.SelectedIndex - 1
+            lstCommands.Items.RemoveAt(lstCommands.SelectedIndex + 1)
+        End If
+        If lstCommands.Items.Count = 0 Then
+            btnRemove.Enabled = False
+            btnTest.Enabled = False
         End If
     End Sub
 
@@ -85,6 +99,8 @@ Public Class SteamPlaceholder
         lstCommands.Items.Clear()
         lstCommands.Items.Add("C:\Windows\notepad.exe")
         lstCommands.SelectedIndex = 0
+        btnRemove.Enabled = True
+        btnTest.Enabled = True
     End Sub
 
     Private Sub lstCommands_Click(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged

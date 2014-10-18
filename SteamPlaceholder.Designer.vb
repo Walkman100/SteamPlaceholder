@@ -53,7 +53,6 @@ Partial Class SteamPlaceholder
         Me.lstCommands.IntegralHeight = False
         Me.lstCommands.Location = New System.Drawing.Point(12, 12)
         Me.lstCommands.Name = "lstCommands"
-        Me.lstCommands.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
         Me.lstCommands.Size = New System.Drawing.Size(280, 106)
         Me.lstCommands.TabIndex = 21
         '
