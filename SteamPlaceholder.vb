@@ -4,20 +4,27 @@ Imports System.Threading
 
 Public Class SteamPlaceholder
 
-    'Dim ProgArg As String = ""
-    
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
-        lstCommands.Items.Add("C:\Windows\notepad.exe")
+        ' fill gui
+        For i = 0 To My.Settings.Paths.Count
+            lstCommands.Items.Add(My.Settings.Paths.Item(i))
+        Next
         lstCommands.SelectedIndex = 0
 
-        ''get CommandLineArgs, copy them to a variable or apply them
-        'For Each s As String In My.Application.CommandLineArgs
-        '    If s = "hideGUI" Or s = "hidegui" Then
-        '        WindowState = FormWindowState.Minimized
-        '    ElseIf s <> "hideGUI" Then
-        '        ProgArg = s
-        '    End If
-        'Next
+        'get CommandLineArgs and apply/run them
+        For Each s As String In My.Application.CommandLineArgs
+            If s.ToLower = "hidegui" Then
+                WindowState = FormWindowState.Minimized
+            Else
+                If lstCommands.Items.Contains(s) Then
+                    If File.Exists(lstCommands.Items.Item(s)) Then
+                        Process.Start(lstCommands.Items.Item(s))
+                    Else
+                        MsgBox("The program '" & lstCommands.Items.Item(s) & "' " & "could not be found!", MsgBoxStyle.Critical)
+                    End If
+                End If
+            End If
+        Next
 
         ''check if an argument is in the GUI, and if so, launch the specified file
         'If ProgArg <> "" Then
