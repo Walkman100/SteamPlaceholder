@@ -20,3 +20,7 @@ It can be a good thing since if you replace the executable of a Steam game with 
 
 ## Donate
 [Show your support!](http://walkman100.github.io/Walkman/HTML/Donate.html)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Walkman100/steamplaceholder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
