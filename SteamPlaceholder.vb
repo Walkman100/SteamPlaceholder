@@ -26,6 +26,12 @@ Public Class SteamPlaceholder
                 End If
             End If
         Next
+
+        Try
+            Process.Start(lstCommands.SelectedItem)
+        Catch ex As Exception
+            MsgBox("There was an error running the program '" & lstCommands.SelectedItem & "!", MsgBoxStyle.Critical)
+        End Try
     End Sub
     
     Private Sub btnEnd_Click(sender As Object, e As EventArgs) Handles btnEnd.Click
@@ -57,17 +63,19 @@ Public Class SteamPlaceholder
     End Sub
 
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
-        If Not File.Exists(lstCommands.SelectedItem) Then
-            If MsgBox("The program '" & lstCommands.SelectedItem & "' " & "could not be found! Attempt to run anyway?", MsgBoxStyle.Critical + MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
-        End If
-        Process.Start(lstCommands.SelectedItem)
+        Try
+            Process.Start(lstCommands.SelectedItem)
+        Catch ex As Exception
+            MsgBox("There was an error running the program '" & lstCommands.SelectedItem & "!", MsgBoxStyle.Critical)
+        End Try
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+        If lstCommands.Items.Count = 1 Then
+            btnRemove.Enabled = True
+        End If
         lstCommands.Items.Insert(lstCommands.SelectedIndex + 1, txtArgs.Text)
         lstCommands.SelectedIndex = lstCommands.SelectedIndex + 1
-        btnRemove.Enabled = True
-        btnTest.Enabled = True
     End Sub
 
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
@@ -77,9 +85,8 @@ Public Class SteamPlaceholder
             lstCommands.SelectedIndex = lstCommands.SelectedIndex - 1
             lstCommands.Items.RemoveAt(lstCommands.SelectedIndex + 1)
         End If
-        If lstCommands.Items.Count = 0 Then
+        If lstCommands.Items.Count = 1 Then
             btnRemove.Enabled = False
-            btnTest.Enabled = False
         End If
     End Sub
 End Class
