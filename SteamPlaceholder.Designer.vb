@@ -30,7 +30,7 @@ Partial Class SteamPlaceholder
         Me.txtArgs = New System.Windows.Forms.TextBox()
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
-        Me.btnRebuild = New System.Windows.Forms.Button()
+        Me.btnSet = New System.Windows.Forms.Button()
         Me.btnTest = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
@@ -53,14 +53,14 @@ Partial Class SteamPlaceholder
         Me.lstCommands.IntegralHeight = False
         Me.lstCommands.Location = New System.Drawing.Point(12, 12)
         Me.lstCommands.Name = "lstCommands"
-        Me.lstCommands.Size = New System.Drawing.Size(280, 106)
+        Me.lstCommands.Size = New System.Drawing.Size(479, 106)
         Me.lstCommands.TabIndex = 21
         '
         'btnEnd
         '
         Me.btnEnd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnEnd.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnEnd.Location = New System.Drawing.Point(379, 96)
+        Me.btnEnd.Location = New System.Drawing.Point(578, 96)
         Me.btnEnd.Name = "btnEnd"
         Me.btnEnd.Size = New System.Drawing.Size(75, 23)
         Me.btnEnd.TabIndex = 23
@@ -71,7 +71,7 @@ Partial Class SteamPlaceholder
         '
         Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnAdd.Location = New System.Drawing.Point(298, 38)
+        Me.btnAdd.Location = New System.Drawing.Point(497, 67)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(75, 23)
         Me.btnAdd.TabIndex = 24
@@ -81,7 +81,7 @@ Partial Class SteamPlaceholder
         'txtArgs
         '
         Me.txtArgs.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtArgs.Location = New System.Drawing.Point(298, 12)
+        Me.txtArgs.Location = New System.Drawing.Point(497, 12)
         Me.txtArgs.Name = "txtArgs"
         Me.txtArgs.Size = New System.Drawing.Size(156, 20)
         Me.txtArgs.TabIndex = 25
@@ -90,37 +90,37 @@ Partial Class SteamPlaceholder
         '
         Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnBrowse.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnBrowse.Location = New System.Drawing.Point(379, 38)
+        Me.btnBrowse.Location = New System.Drawing.Point(578, 38)
         Me.btnBrowse.Name = "btnBrowse"
         Me.btnBrowse.Size = New System.Drawing.Size(75, 23)
         Me.btnBrowse.TabIndex = 26
-        Me.btnBrowse.Text = "Browse"
+        Me.btnBrowse.Text = "Browse..."
         Me.btnBrowse.UseVisualStyleBackColor = True
         '
         'btnRemove
         '
         Me.btnRemove.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRemove.Location = New System.Drawing.Point(298, 67)
+        Me.btnRemove.Location = New System.Drawing.Point(497, 96)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(75, 23)
         Me.btnRemove.TabIndex = 27
         Me.btnRemove.Text = "Remove"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
-        'btnRebuild
+        'btnSet
         '
-        Me.btnRebuild.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnRebuild.Location = New System.Drawing.Point(379, 67)
-        Me.btnRebuild.Name = "btnRebuild"
-        Me.btnRebuild.Size = New System.Drawing.Size(75, 23)
-        Me.btnRebuild.TabIndex = 28
-        Me.btnRebuild.Text = "Rebuild List"
-        Me.btnRebuild.UseVisualStyleBackColor = True
+        Me.btnSet.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnSet.Location = New System.Drawing.Point(497, 38)
+        Me.btnSet.Name = "btnSet"
+        Me.btnSet.Size = New System.Drawing.Size(75, 23)
+        Me.btnSet.TabIndex = 28
+        Me.btnSet.Text = "<< Set"
+        Me.btnSet.UseVisualStyleBackColor = True
         '
         'btnTest
         '
         Me.btnTest.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnTest.Location = New System.Drawing.Point(298, 96)
+        Me.btnTest.Location = New System.Drawing.Point(578, 67)
         Me.btnTest.Name = "btnTest"
         Me.btnTest.Size = New System.Drawing.Size(75, 23)
         Me.btnTest.TabIndex = 29
@@ -134,9 +134,9 @@ Partial Class SteamPlaceholder
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = True
         Me.CancelButton = Me.btnEnd
-        Me.ClientSize = New System.Drawing.Size(466, 130)
+        Me.ClientSize = New System.Drawing.Size(665, 130)
         Me.Controls.Add(Me.btnTest)
-        Me.Controls.Add(Me.btnRebuild)
+        Me.Controls.Add(Me.btnSet)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnBrowse)
         Me.Controls.Add(Me.txtArgs)
@@ -160,7 +160,7 @@ Partial Class SteamPlaceholder
     Friend WithEvents txtArgs As System.Windows.Forms.TextBox
     Friend WithEvents btnBrowse As System.Windows.Forms.Button
     Friend WithEvents btnRemove As System.Windows.Forms.Button
-    Friend WithEvents btnRebuild As System.Windows.Forms.Button
+    Friend WithEvents btnSet As System.Windows.Forms.Button
     Friend WithEvents btnTest As System.Windows.Forms.Button
 
 End Class

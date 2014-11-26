@@ -6,7 +6,7 @@ Public Class SteamPlaceholder
 
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
         ' fill gui: lstCommands.Items = My.Settings.Paths
-        For i = 0 To My.Settings.Paths.Count
+        For i = 0 To My.Settings.Paths.Count - 1
             lstCommands.Items.Add(My.Settings.Paths.Item(i))
         Next
         lstCommands.SelectedIndex = 0
@@ -31,43 +31,43 @@ Public Class SteamPlaceholder
     Private Sub btnEnd_Click(sender As Object, e As EventArgs) Handles btnEnd.Click
         Application.Exit()
     End Sub
+
+    Private Sub lstCommands_Changed(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged, lstCommands.SelectedValueChanged
+        txtArgs.Text = lstCommands.SelectedItem
+    End Sub
+
+    Sub SaveStrings()
+        'My.Settings.Paths = lstCommands.Items
+        My.Settings.Paths.Clear()
+        For i = 0 To lstCommands.Items.Count - 1
+            My.Settings.Paths.Add(lstCommands.Items.Item(i))
+        Next
+    End Sub
     
+    Private Sub SetItem() Handles btnSet.Click
+        lstCommands.Items.Item(lstCommands.SelectedIndex) = txtArgs.Text
+        SaveStrings()
+    End Sub
+
     Private Sub btnBrowse_Click(sender As Object, e As EventArgs) Handles btnBrowse.Click
-        openFileDialogBrowse.ShowDialog()
-        If openFileDialogBrowse.FileName <> "" Then
+        If openFileDialogBrowse.ShowDialog() = Windows.Forms.DialogResult.OK Then
             txtArgs.Text = openFileDialogBrowse.FileName
-            txtArgs_KeyPress(Nothing, Nothing)
+            SetItem()
         End If
     End Sub
 
     Private Sub btnTest_Click(sender As Object, e As EventArgs) Handles btnTest.Click
-        If lstCommands.SelectedIndex = -1 Then
-            MsgBox("No item selected")
-        Else
-            If File.Exists(lstCommands.SelectedItem) Then
-                Process.Start(lstCommands.SelectedItem)
-            Else
-                MsgBox("The program '" & lstCommands.SelectedItem & "' " & "could not be found!", MsgBoxStyle.Critical)
-            End If
+        If Not File.Exists(lstCommands.SelectedItem) Then
+            If MsgBox("The program '" & lstCommands.SelectedItem & "' " & "could not be found! Attempt to run anyway?", MsgBoxStyle.Critical + MsgBoxStyle.YesNo) = MsgBoxResult.No Then Exit Sub
         End If
+        Process.Start(lstCommands.SelectedItem)
     End Sub
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If txtArgs.Text = "" Then
-            MsgBox("Nothing to add!")
-        Else
-            If 0 <> 0 Then
-                ' Inserts at the end of list
-                lstCommands.Items.Add(txtArgs.Text)
-                lstCommands.SelectedIndex = lstCommands.Items.Count - 1
-            Else
-                ' Inserts just after selected item
-                lstCommands.Items.Insert(lstCommands.SelectedIndex + 1, txtArgs.Text)
-                lstCommands.SelectedIndex = lstCommands.SelectedIndex + 1
-            End If
-            btnRemove.Enabled = True
-            btnTest.Enabled = True
-        End If
+        lstCommands.Items.Insert(lstCommands.SelectedIndex + 1, txtArgs.Text)
+        lstCommands.SelectedIndex = lstCommands.SelectedIndex + 1
+        btnRemove.Enabled = True
+        btnTest.Enabled = True
     End Sub
 
     Private Sub btnRemove_Click(sender As Object, e As EventArgs) Handles btnRemove.Click
@@ -80,33 +80,6 @@ Public Class SteamPlaceholder
         If lstCommands.Items.Count = 0 Then
             btnRemove.Enabled = False
             btnTest.Enabled = False
-        End If
-    End Sub
-
-    Private Sub btnRebuild_Click(sender As Object, e As EventArgs) Handles btnRebuild.Click
-        lstCommands.Items.Clear()
-        lstCommands.Items.Add("C:\Windows\notepad.exe")
-        lstCommands.SelectedIndex = 0
-        btnRemove.Enabled = True
-        btnTest.Enabled = True
-    End Sub
-
-    Private Sub lstCommands_Changed(sender As Object, e As EventArgs) Handles lstCommands.Click, lstCommands.SelectedIndexChanged, lstCommands.SelectedValueChanged
-        If lstCommands.SelectedIndex = -1 Then
-            txtArgs.Text = ""
-        Else
-            txtArgs.Text = lstCommands.SelectedItem
-        End If
-        'My.Settings.Paths = lstCommands.Items
-        My.Settings.Paths.Clear()
-        For i = 0 To lstCommands.Items.Count - 1
-            My.Settings.Paths.Add(lstCommands.Items.Item(i))
-        Next
-    End Sub
-
-    Private Sub txtArgs_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtArgs.KeyPress
-        If Not lstCommands.SelectedIndex = -1 Then
-            lstCommands.Items.Item(lstCommands.SelectedIndex) = txtArgs.Text
         End If
     End Sub
 End Class
