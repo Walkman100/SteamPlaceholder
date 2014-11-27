@@ -11,20 +11,18 @@ Public Class SteamPlaceholder
         Next
         lstCommands.SelectedIndex = 0
 
-        Dim IsInteger As Boolean = True
         'get CommandLineArgs and apply/run them
         For Each s As String In My.Application.CommandLineArgs
             If s.ToLower = "hidegui" Then
                 WindowState = FormWindowState.Minimized
             Else
                 Try
-                    s.Cast(Of Integer)()
-                Catch ex As Exception
-                    IsInteger = False
-                End Try
-                If IsInteger Then
+                    lstCommands.SelectedIndex = s
                     RunProgram()
-                End If
+                Catch ex As Exception
+                    MsgBox("""" & s.ToString & """ is not a valid integer or doesn't exist in the list!" & vbNewLine & vbNewLine & _
+                           "The error was:" & vbNewLine & ex.Message, MsgBoxStyle.Critical)
+                End Try
             End If
         Next
     End Sub
