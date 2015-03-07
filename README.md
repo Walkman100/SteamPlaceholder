@@ -1,12 +1,11 @@
 # SteamPlaceholder [![Build status](https://ci.appveyor.com/api/projects/status/y315rvdlio5tp8yi)](https://ci.appveyor.com/project/Walkman100/steamplaceholder)
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 A program that you can point [Steam](http://store.steampowered.com/) to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
+
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 Please note that if it is passed multiple parameters that are not `hideGUI` or `hidegui`, then it will only run the last argument passed to it.
 
 # Some Examples (Screenshot):
-
 ![Example & Screenshot](http://walkman100.github.io/Walkman/Images/WindowsProjectsScreenshots/SteamPlaceholder/ScreenshotExample.png "Example & Screenshot")
 
 This shows that you can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. This screenshot also explains how to use this with Steam.
