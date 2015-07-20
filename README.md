@@ -3,10 +3,11 @@ A program that you can point [Steam](http://store.steampowered.com/) to, that wi
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Please note that if it is passed multiple parameters that are not `hideGUI` or `hidegui`, then it will only run the last argument passed to it.
+Please note that if it is passed multiple parameters that are not `hideGUI`, then it will only run the last argument passed to it.
 
 # Some Examples (Screenshot):
-![Example & Screenshot](http://walkman100.github.io/Walkman/Images/WindowsProjectsScreenshots/SteamPlaceholder/ScreenshotExample.png "Example & Screenshot")
+[![Example & Screenshot][Screenshot]][Screenshot]
+  [Screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/ScreenshotExample.png
 
 This shows that you can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. This screenshot also explains how to use this with Steam.
 
