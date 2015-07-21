@@ -6,10 +6,12 @@ In jurisdictions that recognize copyright laws, the author or authors of this so
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-The name Steam and the Steam icon ![steam icon](https://raw.githubusercontent.com/Walkman100/SteamPlaceholder/master/My%20Project/steam.ico) are:
+The name Steam and the Steam icon [![steam icon][steam]][steam] are trademarks and/or registered trademarks of Valve Corporation:
 
-`© 2014 Valve` ![valve logo](http://store.akamai.steamstatic.com/public/images/v6/logo_valve_footer.png) `Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.`
+> © 2013 [![Valve logo][valve]][valve] Corporation. All rights reserved. All trademarks are property of their respective owners in the US and other countries.
 
 View their full Copyright document [here](http://www.valvesoftware.com/legal.html).
 
-No code or any material, besides the steam logo and the name Steam, has been published with or in this product.
+No code or any material, besides the Steam logo and the name Steam, has been published with or in this program.
+  [steam]: https://raw.githubusercontent.com/Walkman100/SteamPlaceholder/master/My%20Project/steam.ico
+  [valve]: http://www.valvesoftware.com/images/header_logo.png
