@@ -7,7 +7,7 @@ Public Class SteamPlaceholder
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
         ' fill gui: lstCommands.Items = My.Settings.Paths
         For i = 0 To My.Settings.Paths.Count - 1
-            lstCommands.Items.Add(My.Settings.Paths.Item(i))
+            'lstCommands.Items.Add(My.Settings.Paths.Item(i))
         Next
         lstCommands.SelectedIndex = 0
 
@@ -37,9 +37,9 @@ Public Class SteamPlaceholder
 
     Private Sub SaveStrings()
         'My.Settings.Paths = lstCommands.Items
-        My.Settings.Paths.Clear()
+        'My.Settings.Paths.Clear()
         For i = 0 To lstCommands.Items.Count - 1
-            My.Settings.Paths.Add(lstCommands.Items.Item(i))
+            'My.Settings.Paths.Add(lstCommands.Items.Item(i))
         Next
     End Sub
 
