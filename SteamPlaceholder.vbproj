@@ -27,7 +27,6 @@
     <DebugSymbols>true</DebugSymbols>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <WarningLevel>1</WarningLevel>
   </PropertyGroup>
@@ -35,7 +34,6 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Release\</OutputPath>
     <WarningLevel>1</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
@@ -52,11 +50,13 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <Optimize>False</Optimize>
     <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
     <StartAction>Project</StartAction>
+    <OutputPath>bin\Debug\</OutputPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
     <BaseAddress>4194304</BaseAddress>
