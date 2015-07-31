@@ -1,8 +1,4 @@
-﻿Imports System.Math
-Imports System.IO
-Imports System.Threading
-
-Public Class SteamPlaceholder
+﻿Public Class SteamPlaceholder
     
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
         openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")

@@ -64,12 +64,12 @@ Partial Class SteamPlaceholder
         'colheadPath
         '
         Me.colheadPath.Text = "Program/file path"
-        Me.colheadPath.Width = 254
+        Me.colheadPath.Width = 239
         '
         'colheadProgramArgs
         '
         Me.colheadProgramArgs.Text = "Program Arguments"
-        Me.colheadProgramArgs.Width = 105
+        Me.colheadProgramArgs.Width = 104
         '
         'colheadExtArgs
         '
