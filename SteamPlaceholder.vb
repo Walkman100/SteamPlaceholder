@@ -26,11 +26,21 @@ Public Class SteamPlaceholder
         Next
     End Sub
     
-    Private Sub EndSPH() Handles btnEnd.Click
-        Application.Exit()
+    Private Sub AddItem() Handles btnAdd.Click
+        lstCommands.Items.Add("")
+        CheckButtons
     End Sub
     
-    Private Sub CheckButtons() Handles lstCommands.Click, lstCommands.SelectedIndexChanged
+    Private Sub RemoveItem() Handles btnRemove.Click
+        If IsNothing(lstCommands.FocusedItem) Then
+            MsgBox("No item selected")
+        Else
+            lstCommands.FocusedItem.Remove
+        End If
+        CheckButtons
+    End Sub
+    
+    Sub btnEdit_Click() Handles btnEdit.Click
         
     End Sub
     
@@ -40,23 +50,29 @@ Public Class SteamPlaceholder
         End If
     End Sub
     
-    Private Sub RunProgram() Handles btnTest.Click
+    Private Sub RunProgram() Handles btnRun.Click
         Try
             Process.Start(lstCommands.FocusedItem.Text)
         Catch ex As Exception
-            MsgBox("There was an error running the program '" & lstCommands.FocusedItem.Text & "!", MsgBoxStyle.Critical)
+            MsgBox("There was an error running the program """ & lstCommands.FocusedItem.Text & """!", MsgBoxStyle.Critical)
         End Try
     End Sub
     
-    Private Sub AddItem() Handles btnAdd.Click
-        lstCommands.Items.Add("")
+    Private Sub EndSPH() Handles btnEnd.Click
+        Application.Exit()
     End Sub
     
-    Private Sub RemoveItem() Handles btnRemove.Click
+    Private Sub CheckButtons() Handles lstCommands.Click, lstCommands.SelectedIndexChanged
         If IsNothing(lstCommands.FocusedItem) Then
-            MsgBox("No item selected")
+            btnRemove.Enabled = False
+            btnEdit.Enabled = False
+            btnBrowse.Enabled = False
+            btnRun.Enabled = False
         Else
-            lstCommands.FocusedItem.Remove
+            btnRemove.Enabled = True
+            btnEdit.Enabled = True
+            btnBrowse.Enabled = True
+            btnRun.Enabled = True
         End If
     End Sub
 End Class

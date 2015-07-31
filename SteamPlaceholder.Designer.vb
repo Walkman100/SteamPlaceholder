@@ -32,7 +32,7 @@ Partial Class SteamPlaceholder
         Me.btnBrowse = New System.Windows.Forms.Button()
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
-        Me.btnTest = New System.Windows.Forms.Button()
+        Me.btnRun = New System.Windows.Forms.Button()
         Me.SuspendLayout
         '
         'openFileDialogBrowse
@@ -130,25 +130,25 @@ Partial Class SteamPlaceholder
         Me.btnEdit.Text = "Edit"
         Me.btnEdit.UseVisualStyleBackColor = true
         '
-        'btnTest
+        'btnRun
         '
-        Me.btnTest.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
-        Me.btnTest.Location = New System.Drawing.Point(532, 128)
-        Me.btnTest.Name = "btnTest"
-        Me.btnTest.Size = New System.Drawing.Size(61, 23)
-        Me.btnTest.TabIndex = 29
-        Me.btnTest.Text = "Run"
-        Me.btnTest.UseVisualStyleBackColor = true
+        Me.btnRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnRun.Location = New System.Drawing.Point(532, 128)
+        Me.btnRun.Name = "btnRun"
+        Me.btnRun.Size = New System.Drawing.Size(61, 23)
+        Me.btnRun.TabIndex = 29
+        Me.btnRun.Text = "Run"
+        Me.btnRun.UseVisualStyleBackColor = true
         '
         'SteamPlaceholder
         '
-        Me.AcceptButton = Me.btnTest
+        Me.AcceptButton = Me.btnRun
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoScroll = true
         Me.CancelButton = Me.btnEnd
         Me.ClientSize = New System.Drawing.Size(605, 192)
-        Me.Controls.Add(Me.btnTest)
+        Me.Controls.Add(Me.btnRun)
         Me.Controls.Add(Me.btnEdit)
         Me.Controls.Add(Me.btnRemove)
         Me.Controls.Add(Me.btnBrowse)
@@ -168,11 +168,11 @@ Partial Class SteamPlaceholder
     Private colheadPath As System.Windows.Forms.ColumnHeader
     Private openFileDialogBrowse As System.Windows.Forms.OpenFileDialog
     Private WithEvents lstCommands As System.Windows.Forms.ListView
-    Private btnEnd As System.Windows.Forms.Button
-    Private btnAdd As System.Windows.Forms.Button
-    Private btnBrowse As System.Windows.Forms.Button
-    Private btnRemove As System.Windows.Forms.Button
-    Private btnEdit As System.Windows.Forms.Button
-    Private btnTest As System.Windows.Forms.Button
+    Private WithEvents btnEnd As System.Windows.Forms.Button
+    Private WithEvents btnAdd As System.Windows.Forms.Button
+    Private WithEvents btnBrowse As System.Windows.Forms.Button
+    Private WithEvents btnRemove As System.Windows.Forms.Button
+    Private WithEvents btnEdit As System.Windows.Forms.Button
+    Private WithEvents btnRun As System.Windows.Forms.Button
 
 End Class
