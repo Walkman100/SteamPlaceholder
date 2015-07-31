@@ -1,11 +1,16 @@
 ﻿Public Class SteamPlaceholder
     
+    Dim configFolder As String = Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS"
+    
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
         openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
-        ' fill gui: lstCommands.Items = My.Settings.Paths
-        'For i = 0 To My.Settings.Paths.Count - 1
-            'lstCommands.Items.Add(My.Settings.Paths.Item(i))
-        'Next
+        
+        If Not IO.Directory.Exists(configFolder) Then
+            IO.Directory.CreateDirectory(configFolder)
+        End If
+        If IO.File.Exists(configFolder & "\SteamPlaceholder.xml") Then
+            ReadConfig(configFolder & "\SteamPlaceholder.xml")
+        End If
         
         'get CommandLineArgs and apply/run them
         For Each s As String In My.Application.CommandLineArgs
@@ -20,6 +25,39 @@
             End If
         Next
         CheckButtons
+    End Sub
+    
+    Private Sub ReadConfig(path As String)
+        Dim reader As XmlReader = XmlReader.Create(path)
+        reader.Read()
+        
+        If reader.IsStartElement() AndAlso reader.Name = "SteamPlaceHolder" Then
+            If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "ProgramList" Then
+                While reader.IsStartElement
+                    If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "Program" Then
+                        Dim tmpListViewItem As New System.Windows.Forms.ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
+                        
+                        Dim attribute As String = reader("path")
+                        If attribute IsNot Nothing Then
+                            tmpListViewItem.Text = attribute
+                        End If
+                        
+                        attribute = reader("args")
+                        If attribute IsNot Nothing Then
+                            tmpListViewItem.SubItems.Item(1).Text = attribute
+                        End If
+                        
+                        attribute = reader("entryarg")
+                        If attribute IsNot Nothing Then
+                            tmpListViewItem.SubItems.Item(2).Text = attribute
+                        End If
+                        lstCommands.Items.Add(tmpListViewItem)
+                    End If
+                End While
+            End If
+        End If
+        
+        reader.Close
     End Sub
     
     Private Sub AddItem() Handles btnAdd.Click
@@ -41,7 +79,7 @@
         Dim inputBoxText As String
         inputBoxText = InputBox("Enter the arguments to start the program with:", "", lstCommands.FocusedItem.SubItems.Item(1).Text)
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
-        inputBoxText = InputBox("Enter the argument to use ta start SteamPLaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
+        inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
     End Sub
     
