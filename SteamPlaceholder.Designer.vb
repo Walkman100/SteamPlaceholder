@@ -37,11 +37,10 @@ Partial Class SteamPlaceholder
         '
         'openFileDialogBrowse
         '
-        Me.openFileDialogBrowse.AutoUpgradeEnabled = false
         Me.openFileDialogBrowse.DefaultExt = "exe"
+        Me.openFileDialogBrowse.Filter = "Applications|*.exe; *.msi; *.bat; *.com|All files|*.*"
         Me.openFileDialogBrowse.InitialDirectory = "%ProgramFiles%"
         Me.openFileDialogBrowse.ReadOnlyChecked = true
-        Me.openFileDialogBrowse.ShowHelp = true
         '
         'lstCommands
         '

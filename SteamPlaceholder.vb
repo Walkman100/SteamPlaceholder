@@ -5,6 +5,7 @@ Imports System.Threading
 Public Class SteamPlaceholder
     
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
+        openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
         ' fill gui: lstCommands.Items = My.Settings.Paths
         'For i = 0 To My.Settings.Paths.Count - 1
             'lstCommands.Items.Add(My.Settings.Paths.Item(i))
@@ -13,21 +14,21 @@ Public Class SteamPlaceholder
         'get CommandLineArgs and apply/run them
         For Each s As String In My.Application.CommandLineArgs
             If s.ToLower = "hidegui" Then
-                WindowState = FormWindowState.Minimized
+                Me.WindowState = FormWindowState.Minimized
             Else
-                Try
-                    'lstCommands.SelectedIndex = s
-                    RunProgram()
-                Catch ex As Exception
-                    MsgBox("""" & s.ToString & """ is not a valid integer or doesn't exist in the list!" & vbNewLine & vbNewLine & _
-                           "The error was:" & vbNewLine & ex.Message, MsgBoxStyle.Critical)
-                End Try
+                For Each item As ListViewItem In lstCommands.Items
+                    If item.SubItems.Item(2).Text = s Then
+                        RunProgram(item)
+                    End If
+                Next
             End If
         Next
+        CheckButtons
     End Sub
     
     Private Sub AddItem() Handles btnAdd.Click
-        lstCommands.Items.Add("")
+        Dim tmpListViewItem As New System.Windows.Forms.ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
+        lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
         CheckButtons
     End Sub
     
@@ -40,8 +41,12 @@ Public Class SteamPlaceholder
         CheckButtons
     End Sub
     
-    Sub btnEdit_Click() Handles btnEdit.Click
-        
+    Private Sub btnEdit_Click() Handles btnEdit.Click
+        Dim inputBoxText As String
+        inputBoxText = InputBox("Enter the arguments to start the program with:", "", lstCommands.FocusedItem.SubItems.Item(1).Text)
+        If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
+        inputBoxText = InputBox("Enter the argument to use ta start SteamPLaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
+        If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
     End Sub
     
     Private Sub Browse() Handles btnBrowse.Click
@@ -50,11 +55,19 @@ Public Class SteamPlaceholder
         End If
     End Sub
     
-    Private Sub RunProgram() Handles btnRun.Click
+    Private Sub RunSelectedEntry() Handles btnRun.Click
+        RunProgram(lstCommands.FocusedItem)
+    End Sub
+    
+    Private Sub RunProgram(entry As ListViewItem)
         Try
-            Process.Start(lstCommands.FocusedItem.Text)
+            Process.Start(entry.Text, entry.SubItems.Item(1).Text)
         Catch ex As Exception
-            MsgBox("There was an error running the program """ & lstCommands.FocusedItem.Text & """!", MsgBoxStyle.Critical)
+            Try
+                MsgBox("There was an error running the program """ & entry.Text & """ with """ & entry.SubItems.Item(1).Text & """ args!", MsgBoxStyle.Critical)
+            Catch ex2 As Exception
+                MsgBox("Error finding the data to run the program! Error was:" & vbNewLine & ex2.Message, MsgBoxStyle.Critical)
+            End Try
         End Try
     End Sub
     
