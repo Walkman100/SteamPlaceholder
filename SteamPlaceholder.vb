@@ -31,7 +31,7 @@
         Dim reader As XmlReader = XmlReader.Create(path)
         reader.Read()
         
-        If reader.IsStartElement() AndAlso reader.Name = "SteamPlaceHolder" Then
+        If reader.IsStartElement() AndAlso reader.Name = "SteamPlaceholder" Then
             If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "ProgramList" Then
                 While reader.IsStartElement
                     If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "Program" Then
@@ -58,6 +58,30 @@
         End If
         
         reader.Close
+    End Sub
+    
+    Private Sub WriteConfig(path As String)
+        Dim XMLwSettings As New XmlWriterSettings()
+        XMLwSettings.Indent = True
+        Dim writer As XmlWriter = XmlWriter.Create(path, XMLwSettings)
+        
+        writer.WriteStartDocument()
+        writer.WriteStartElement("SteamPlaceholder")
+        writer.WriteStartElement("ProgramList")
+        
+        For Each item In lstCommands.Items
+            writer.WriteStartElement("Program")
+            writer.WriteAttributeString("path", item.Text)
+            writer.WriteAttributeString("args", item.SubItems.Item(1).Text)
+            writer.WriteAttributeString("entryarg", item.SubItems.Item(2).Text)
+            writer.WriteEndElement()
+        Next
+
+        writer.WriteEndElement()
+        writer.WriteEndElement()
+        writer.WriteEndDocument()
+        
+        writer.Close
     End Sub
     
     Private Sub AddItem() Handles btnAdd.Click
