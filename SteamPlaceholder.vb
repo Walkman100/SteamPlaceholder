@@ -55,6 +55,46 @@
                     End If
                 End While
             End If
+            If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "Settings" Then
+                If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "ColumnSettings" Then
+                    Dim attribute As String
+                    While reader.IsStartElement
+                        If reader.Read AndAlso reader.IsStartElement() Then
+                            If reader.Name = "PathColumn" Then
+                                attribute = reader("index")
+                                If attribute IsNot Nothing Then
+                                    colheadPath.DisplayIndex = attribute
+                                End If
+                                
+                                attribute = reader("width")
+                                If attribute IsNot Nothing Then
+                                    colheadPath.Width = attribute
+                                End If
+                            ElseIf reader.Name = "ArgColumn"
+                                attribute = reader("index")
+                                If attribute IsNot Nothing Then
+                                    colheadProgramArgs.DisplayIndex = attribute
+                                End If
+                                
+                                attribute = reader("width")
+                                If attribute IsNot Nothing Then
+                                    colheadProgramArgs.Width = attribute
+                                End If
+                            ElseIf reader.Name = "EntryArgColumn"
+                                attribute = reader("index")
+                                If attribute IsNot Nothing Then
+                                    colheadExtArgs.DisplayIndex = attribute
+                                End If
+                                
+                                attribute = reader("width")
+                                If attribute IsNot Nothing Then
+                                    colheadExtArgs.Width = attribute
+                                End If
+                            End If
+                        End If
+                    End While
+                End If
+            End If
         End If
         
         reader.Close
@@ -67,8 +107,8 @@
         
         writer.WriteStartDocument()
         writer.WriteStartElement("SteamPlaceholder")
-        writer.WriteStartElement("ProgramList")
         
+        writer.WriteStartElement("ProgramList")
         For Each item In lstCommands.Items
             writer.WriteStartElement("Program")
             writer.WriteAttributeString("path", item.Text)
@@ -76,8 +116,25 @@
             writer.WriteAttributeString("entryarg", item.SubItems.Item(2).Text)
             writer.WriteEndElement()
         Next
-
         writer.WriteEndElement()
+        
+        writer.WriteStartElement("Settings")
+            writer.WriteStartElement("ColumnSettings")
+                writer.WriteStartElement("PathColumn")
+                    writer.WriteAttributeString("index", colheadPath.DisplayIndex)
+                    writer.WriteAttributeString("width", colheadPath.Width)
+                writer.WriteEndElement()
+                writer.WriteStartElement("ArgColumn")
+                    writer.WriteAttributeString("index", colheadProgramArgs.DisplayIndex)
+                    writer.WriteAttributeString("width", colheadProgramArgs.Width)
+                writer.WriteEndElement()
+                writer.WriteStartElement("EntryArgColumn")
+                    writer.WriteAttributeString("index", colheadExtArgs.DisplayIndex)
+                    writer.WriteAttributeString("width", colheadExtArgs.Width)
+                writer.WriteEndElement()
+            writer.WriteEndElement()
+        writer.WriteEndElement()
+        
         writer.WriteEndElement()
         writer.WriteEndDocument()
         
