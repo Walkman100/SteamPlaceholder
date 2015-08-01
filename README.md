@@ -3,13 +3,11 @@ A program that you can point [Steam](http://store.steampowered.com/) to, that wi
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-Please note that if it is passed multiple parameters that are not `hideGUI`, then it will only run the last argument passed to it.
-
-# Some Examples (Screenshot):
+### Screenshot
 [![Example & Screenshot][Screenshot]][Screenshot]
-  [Screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/ScreenshotExample.png
+  [Screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/MainWindow.png
 
-This shows that you can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. This screenshot also explains how to use this with Steam.
+You can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. To use this with Steam, see [this screenshot](http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/ScreenshotExample.png) from v1.
 
 # Compatibility with Steam's game overlay:
 The `GameOverlayUI.exe` process that launches and attaches to games & programs launched through Steam doesn't show on this program, but if it was started through Steam, the Steam overlay will attach to any programs that are started from it. This can be both a good thing and a bad thing:
