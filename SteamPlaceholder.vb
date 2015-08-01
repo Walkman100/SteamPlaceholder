@@ -105,11 +105,13 @@
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
         inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
+        WriteConfig(configFolder & "\SteamPlaceholder.xml")
     End Sub
     
     Private Sub Browse() Handles btnBrowse.Click
         If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
             lstCommands.FocusedItem.Text = openFileDialogBrowse.FileName
+            WriteConfig(configFolder & "\SteamPlaceholder.xml")
         End If
     End Sub
     
@@ -130,6 +132,7 @@
     End Sub
     
     Private Sub EndSPH() Handles btnEnd.Click
+        WriteConfig(configFolder & "\SteamPlaceholder.xml")
         Application.Exit()
     End Sub
     
@@ -145,5 +148,6 @@
             btnBrowse.Enabled = True
             btnRun.Enabled = True
         End If
+        WriteConfig(configFolder & "\SteamPlaceholder.xml")
     End Sub
 End Class
