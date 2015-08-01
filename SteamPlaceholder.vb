@@ -1,15 +1,23 @@
-﻿Public Class SteamPlaceholder
+﻿Imports System.IO
+Public Class SteamPlaceholder
     
-    Dim configFolder As String = Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS"
+    Dim configFilePath As String = Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS\SteamPlaceholder.xml"
     
     Private Sub LoadSteamPlaceHolder() Handles Me.Load
         openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
         
-        If Not IO.Directory.Exists(configFolder) Then
-            IO.Directory.CreateDirectory(configFolder)
+        If Not Directory.Exists(Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS") Then
+            Directory.CreateDirectory(Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS")
         End If
-        If IO.File.Exists(configFolder & "\SteamPlaceholder.xml") Then
-            ReadConfig(configFolder & "\SteamPlaceholder.xml")
+        
+        If File.Exists(Application.StartupPath & "\SteamPlaceholder.xml") Then
+            configFilePath = Application.StartupPath & "\SteamPlaceholder.xml"
+            ReadConfig(configFilePath)
+        ElseIf File.Exists("SteamPlaceholder.xml") Then
+            configFilePath = (New IO.FileInfo("SteamPlaceholder.xml")).DirectoryName & "\SteamPlaceholder.xml"
+            ReadConfig(configFilePath)
+        ElseIf File.Exists(configFilePath) Then
+            ReadConfig(configFilePath)
         End If
         
         'get CommandLineArgs and apply/run them
@@ -162,13 +170,13 @@
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
         inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
         If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
-        WriteConfig(configFolder & "\SteamPlaceholder.xml")
+        WriteConfig(configFilePath)
     End Sub
     
     Private Sub Browse() Handles btnBrowse.Click
         If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
             lstCommands.FocusedItem.Text = openFileDialogBrowse.FileName
-            WriteConfig(configFolder & "\SteamPlaceholder.xml")
+            WriteConfig(configFilePath)
         End If
     End Sub
     
@@ -189,7 +197,7 @@
     End Sub
     
     Private Sub EndSPH() Handles btnEnd.Click
-        WriteConfig(configFolder & "\SteamPlaceholder.xml")
+        WriteConfig(configFilePath)
         Application.Exit()
     End Sub
     
@@ -205,6 +213,6 @@
             btnBrowse.Enabled = True
             btnRun.Enabled = True
         End If
-        WriteConfig(configFolder & "\SteamPlaceholder.xml")
+        WriteConfig(configFilePath)
     End Sub
 End Class
