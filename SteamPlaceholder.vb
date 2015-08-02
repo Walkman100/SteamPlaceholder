@@ -103,9 +103,19 @@ Public Class SteamPlaceholder
         WriteConfig(configFilePath)
     End Sub
     
+    Sub lstCommands_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles LstCommands.ColumnClick
+        lstCommands.Sorting = IIf(lstCommands.Sorting = SortOrder.Ascending, SortOrder.Descending, SortOrder.Ascending)
+        lstCommands.Sort
+    End Sub
+    
     Private Sub ReadConfig(path As String)
         Dim reader As XmlReader = XmlReader.Create(path)
-        reader.Read()
+        Try
+            reader.Read()
+        Catch ex As XmlException
+            reader.Close
+            Exit Sub
+        End Try
         
         If reader.IsStartElement() AndAlso reader.Name = "SteamPlaceholder" Then
             If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "ProgramList" Then
