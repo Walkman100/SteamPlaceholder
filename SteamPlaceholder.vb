@@ -42,8 +42,10 @@ Public Class SteamPlaceholder
     End Sub
     
     Private Sub RemoveItem() Handles btnRemove.Click
-        If IsNothing(lstCommands.FocusedItem) Then
-            MsgBox("No item selected")
+        If lstCommands.SelectedItems.Count > 1 Then
+            For Each item In lstCommands.SelectedItems
+                item.Remove
+            Next
         Else
             lstCommands.FocusedItem.Remove
         End If
@@ -52,22 +54,48 @@ Public Class SteamPlaceholder
     
     Private Sub btnEdit_Click() Handles btnEdit.Click
         Dim inputBoxText As String
-        inputBoxText = InputBox("Enter the arguments to start the program with:", "", lstCommands.FocusedItem.SubItems.Item(1).Text)
-        If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
-        inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start this entry:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
-        If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
+        If lstCommands.SelectedItems.Count > 1 Then
+            For Each item In lstCommands.SelectedItems
+                inputBoxText = InputBox("Enter the arguments to start """ & item.Text & """ with:", "", item.SubItems.Item(1).Text)
+                If inputBoxText <> "" Then item.SubItems.Item(1).Text = inputBoxText
+                inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start """ & item.Text & """:", "", item.SubItems.Item(2).Text)
+                If inputBoxText <> "" Then item.SubItems.Item(2).Text = inputBoxText
+            Next
+        Else
+            inputBoxText = InputBox("Enter the arguments to start """ & lstCommands.FocusedItem.Text & """ with:", "", lstCommands.FocusedItem.SubItems.Item(1).Text)
+            If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(1).Text = inputBoxText
+            inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start """ & lstCommands.FocusedItem.Text & """:", "", lstCommands.FocusedItem.SubItems.Item(2).Text)
+            If inputBoxText <> "" Then lstCommands.FocusedItem.SubItems.Item(2).Text = inputBoxText
+        End If
         WriteConfig(configFilePath)
     End Sub
     
     Private Sub Browse() Handles btnBrowse.Click
-        If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
-            lstCommands.FocusedItem.Text = openFileDialogBrowse.FileName
-            WriteConfig(configFilePath)
+        If lstCommands.SelectedItems.Count > 1 Then
+            For Each item In lstCommands.SelectedItems
+                openFileDialogBrowse.Title = "Select file to replace """ & item.Text & """ with:"
+                If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
+                    item.Text = openFileDialogBrowse.FileName
+                    WriteConfig(configFilePath)
+                End If
+            Next
+        Else
+            openFileDialogBrowse.Title = "Select file to replace """ & lstCommands.FocusedItem.Text & """ with:"
+            If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
+                lstCommands.FocusedItem.Text = openFileDialogBrowse.FileName
+                WriteConfig(configFilePath)
+            End If
         End If
     End Sub
     
     Private Sub RunSelectedEntry() Handles btnRun.Click
-        RunProgram(lstCommands.FocusedItem)
+        If lstCommands.SelectedItems.Count > 1 Then
+            For Each item In lstCommands.SelectedItems
+                RunProgram(item)
+            Next
+        Else
+            RunProgram(lstCommands.FocusedItem)
+        End If
     End Sub
     
     Private Sub RunProgram(entry As ListViewItem)
@@ -87,8 +115,7 @@ Public Class SteamPlaceholder
         Application.Exit()
     End Sub
     
-    Private Sub CheckButtons() Handles lstCommands.Click, lstCommands.SelectedIndexChanged, _
-          lstCommands.AfterLabelEdit, lstCommands.ItemSelectionChanged, lstCommands.ColumnReordered
+    Private Sub CheckButtons() Handles lstCommands.Click, lstCommands.SelectedIndexChanged, lstCommands.AfterLabelEdit, lstCommands.ColumnReordered
         If IsNothing(lstCommands.FocusedItem) Then
             btnRemove.Enabled = False
             btnEdit.Enabled = False

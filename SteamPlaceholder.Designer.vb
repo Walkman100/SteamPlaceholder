@@ -70,7 +70,6 @@ Partial Class SteamPlaceholder
         Me.lstCommands.HideSelection = false
         Me.lstCommands.LabelEdit = true
         Me.lstCommands.Location = New System.Drawing.Point(12, 12)
-        Me.lstCommands.MultiSelect = false
         Me.lstCommands.Name = "lstCommands"
         Me.lstCommands.Size = New System.Drawing.Size(514, 168)
         Me.lstCommands.TabIndex = 21
