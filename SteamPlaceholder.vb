@@ -36,7 +36,7 @@ Public Class SteamPlaceholder
     End Sub
     
     Private Sub AddItem() Handles btnAdd.Click
-        Dim tmpListViewItem As New System.Windows.Forms.ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
+        Dim tmpListViewItem As New ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
         lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
         CheckButtons
     End Sub
@@ -120,11 +120,30 @@ Public Class SteamPlaceholder
     End Sub
     
     Sub ResizeAllByHeader() Handles contextCommandsResizeAllHeader.Click
-        lstCommands.AutoResizeColumns(System.Windows.Forms.ColumnHeaderAutoResizeStyle.HeaderSize)
+        lstCommands.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize)
     End Sub
     
     Sub ResizeAllByContent() Handles contextCommandsResizeAllContent.Click
-        lstCommands.AutoResizeColumns(System.Windows.Forms.ColumnHeaderAutoResizeStyle.ColumnContent)
+        lstCommands.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent)
+    End Sub
+    
+    Sub lstCommands_DragEnter(sender As Object, e As DragEventArgs) Handles lstCommands.DragEnter
+        If e.Data.GetDataPresent(DataFormats.Text) Or e.Data.GetDataPresent(DataFormats.FileDrop) Then
+            e.Effect = DragDropEffects.All
+        Else
+            e.Effect = DragDropEffects.None
+        End If
+    End Sub
+    
+    Sub lstCommands_DragDrop(sender As Object, e As DragEventArgs) Handles lstCommands.DragDrop
+        If e.Data.GetDataPresent(DataFormats.Text) Then
+            Dim tmpListViewItem As New ListViewItem(New String() {e.Data.GetData(DataFormats.Text).ToString, " ", "draggedFile"})
+            lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
+        ElseIf e.Data.GetDataPresent(DataFormats.FileDrop)
+            
+            Dim tmpListViewItem As New ListViewItem(New String() {e.Data.GetData(DataFormats.FileDrop)(0), " ", "draggedFile"})
+            lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
+        End If
     End Sub
     
     Private Sub ReadConfig(path As String)
@@ -140,7 +159,7 @@ Public Class SteamPlaceholder
             If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "ProgramList" Then
                 While reader.IsStartElement
                     If reader.Read AndAlso reader.IsStartElement() AndAlso reader.Name = "Program" Then
-                        Dim tmpListViewItem As New System.Windows.Forms.ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
+                        Dim tmpListViewItem As New ListViewItem(New String() {"notepad", "file", "openNotepadAtFile"})
                         
                         Dim attribute As String = reader("path")
                         If attribute IsNot Nothing Then
