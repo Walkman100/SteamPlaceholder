@@ -106,6 +106,25 @@ Public Class SteamPlaceholder
     Sub lstCommands_ColumnClick(sender As Object, e As ColumnClickEventArgs) Handles LstCommands.ColumnClick
         lstCommands.Sorting = IIf(lstCommands.Sorting = SortOrder.Ascending, SortOrder.Descending, SortOrder.Ascending)
         lstCommands.Sort
+        'lstCommands.Sort(e.Column)
+    End Sub
+    
+    Sub ResizeByHeader(sender As Object, e As EventArgs) Handles contextCommandsResizePathHeader.Click, _
+            contextCommandsResizeArgsHeader.Click, contextCommandsResizeArgHeader.Click
+        lstCommands.AutoResizeColumn(sender.Tag, ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+    
+    Sub ResizeByContent(sender As Object, e As EventArgs) Handles contextCommandsResizePathContent.Click, _
+            contextCommandsResizeArgsContent.Click, contextCommandsResizeArgContent.Click
+        lstCommands.AutoResizeColumn(sender.Tag, ColumnHeaderAutoResizeStyle.ColumnContent)
+    End Sub
+    
+    Sub ResizeAllByHeader() Handles contextCommandsResizeAllHeader.Click
+        lstCommands.AutoResizeColumns(System.Windows.Forms.ColumnHeaderAutoResizeStyle.HeaderSize)
+    End Sub
+    
+    Sub ResizeAllByContent() Handles contextCommandsResizeAllContent.Click
+        lstCommands.AutoResizeColumns(System.Windows.Forms.ColumnHeaderAutoResizeStyle.ColumnContent)
     End Sub
     
     Private Sub ReadConfig(path As String)
