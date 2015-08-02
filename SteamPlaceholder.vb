@@ -43,7 +43,7 @@ Public Class SteamPlaceholder
     
     Private Sub RemoveItem() Handles btnRemove.Click
         If lstCommands.SelectedItems.Count > 1 Then
-            For Each item In lstCommands.SelectedItems
+            For Each item As ListViewItem In lstCommands.SelectedItems
                 item.Remove
             Next
         Else
@@ -55,7 +55,7 @@ Public Class SteamPlaceholder
     Private Sub btnEdit_Click() Handles btnEdit.Click
         Dim inputBoxText As String
         If lstCommands.SelectedItems.Count > 1 Then
-            For Each item In lstCommands.SelectedItems
+            For Each item As ListViewItem In lstCommands.SelectedItems
                 inputBoxText = InputBox("Enter the arguments to start """ & item.Text & """ with:", "", item.SubItems.Item(1).Text)
                 If inputBoxText <> "" Then item.SubItems.Item(1).Text = inputBoxText
                 inputBoxText = InputBox("Enter the argument to use to start SteamPlaceholder and start """ & item.Text & """:", "", item.SubItems.Item(2).Text)
@@ -72,7 +72,7 @@ Public Class SteamPlaceholder
     
     Private Sub Browse() Handles btnBrowse.Click
         If lstCommands.SelectedItems.Count > 1 Then
-            For Each item In lstCommands.SelectedItems
+            For Each item As ListViewItem In lstCommands.SelectedItems
                 openFileDialogBrowse.Title = "Select file to replace """ & item.Text & """ with:"
                 If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
                     item.Text = openFileDialogBrowse.FileName
@@ -90,7 +90,7 @@ Public Class SteamPlaceholder
     
     Private Sub RunSelectedEntry() Handles btnRun.Click
         If lstCommands.SelectedItems.Count > 1 Then
-            For Each item In lstCommands.SelectedItems
+            For Each item As ListViewItem In lstCommands.SelectedItems
                 RunProgram(item)
             Next
         Else
@@ -167,9 +167,14 @@ Public Class SteamPlaceholder
             Dim tmpListViewItem As New ListViewItem(New String() {e.Data.GetData(DataFormats.Text).ToString, " ", "draggedFile"})
             lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
         ElseIf e.Data.GetDataPresent(DataFormats.FileDrop)
-            
-            Dim tmpListViewItem As New ListViewItem(New String() {e.Data.GetData(DataFormats.FileDrop)(0), " ", "draggedFile"})
-            lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
+            For i = 0 To Integer.MaxValue
+                If (e.Data.GetData(DataFormats.FileDrop)(i) <> Nothing) Then
+                    Dim tmpListViewItem As New ListViewItem(New String() {e.Data.GetData(DataFormats.FileDrop)(i), " ", "draggedFile"})
+                    lstCommands.FocusedItem = lstCommands.Items.Add(tmpListViewItem)
+                Else
+                    Exit For
+                End If
+            Next
         End If
     End Sub
     
