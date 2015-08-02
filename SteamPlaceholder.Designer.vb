@@ -78,7 +78,7 @@ Partial Class SteamPlaceholder
         '
         'btnEnd
         '
-        Me.btnEnd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnEnd.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnEnd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnEnd.Location = New System.Drawing.Point(532, 157)
         Me.btnEnd.Name = "btnEnd"
@@ -89,7 +89,7 @@ Partial Class SteamPlaceholder
         '
         'btnAdd
         '
-        Me.btnAdd.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnAdd.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnAdd.Location = New System.Drawing.Point(532, 12)
         Me.btnAdd.Name = "btnAdd"
@@ -100,7 +100,7 @@ Partial Class SteamPlaceholder
         '
         'btnBrowse
         '
-        Me.btnBrowse.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnBrowse.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.btnBrowse.Location = New System.Drawing.Point(532, 99)
         Me.btnBrowse.Name = "btnBrowse"
@@ -111,7 +111,7 @@ Partial Class SteamPlaceholder
         '
         'btnRemove
         '
-        Me.btnRemove.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnRemove.Location = New System.Drawing.Point(532, 41)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(61, 23)
@@ -121,7 +121,7 @@ Partial Class SteamPlaceholder
         '
         'btnEdit
         '
-        Me.btnEdit.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnEdit.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnEdit.Location = New System.Drawing.Point(532, 70)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(61, 23)
@@ -131,7 +131,7 @@ Partial Class SteamPlaceholder
         '
         'btnRun
         '
-        Me.btnRun.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right),System.Windows.Forms.AnchorStyles)
+        Me.btnRun.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.btnRun.Location = New System.Drawing.Point(532, 128)
         Me.btnRun.Name = "btnRun"
         Me.btnRun.Size = New System.Drawing.Size(61, 23)
