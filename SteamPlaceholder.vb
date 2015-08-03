@@ -74,7 +74,11 @@ Public Class SteamPlaceholder
         If lstCommands.SelectedItems.Count > 1 Then
             For Each item As ListViewItem In lstCommands.SelectedItems
                 openFileDialogBrowse.Title = "Select file to replace """ & item.Text & """ with:"
-                openFileDialogBrowse.InitialDirectory = item.Text.Remove(item.Text.LastIndexOf("\"))
+                If item.Text.Contains("\") Then
+                    openFileDialogBrowse.InitialDirectory = item.Text.Remove(item.Text.LastIndexOf("\"))
+                Else
+                    openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
+                End If
                 If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
                     item.Text = openFileDialogBrowse.FileName
                     WriteConfig(configFilePath)
@@ -82,7 +86,11 @@ Public Class SteamPlaceholder
             Next
         Else
             openFileDialogBrowse.Title = "Select file to replace """ & lstCommands.FocusedItem.Text & """ with:"
-            openFileDialogBrowse.InitialDirectory = lstCommands.FocusedItem.Text.Remove(lstCommands.FocusedItem.Text.LastIndexOf("\"))
+            If lstCommands.FocusedItem.Text.Contains("\") Then 
+                openFileDialogBrowse.InitialDirectory = lstCommands.FocusedItem.Text.Remove(lstCommands.FocusedItem.Text.LastIndexOf("\"))
+            Else
+                openFileDialogBrowse.InitialDirectory = Environment.GetEnvironmentVariable("ProgramFiles")
+            End If
             If openFileDialogBrowse.ShowDialog() = DialogResult.OK Then
                 lstCommands.FocusedItem.Text = openFileDialogBrowse.FileName
                 WriteConfig(configFilePath)
