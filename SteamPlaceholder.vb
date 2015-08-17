@@ -14,7 +14,7 @@ Public Class SteamPlaceholder
             configFilePath = Application.StartupPath & "\SteamPlaceholder.xml"
             ReadConfig(configFilePath)
         ElseIf File.Exists("SteamPlaceholder.xml") Then
-            configFilePath = (New IO.FileInfo("SteamPlaceholder.xml")).DirectoryName & "\SteamPlaceholder.xml"
+            configFilePath = (New IO.FileInfo("SteamPlaceholder.xml")).FullName
             ReadConfig(configFilePath)
         ElseIf File.Exists(configFilePath) Then
             ReadConfig(configFilePath)
