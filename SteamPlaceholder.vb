@@ -1,4 +1,4 @@
-﻿Imports System.IO
+Imports System.IO
 Public Class SteamPlaceholder
     
     Dim configFilePath As String = Environment.GetEnvironmentVariable("AppData") & "\WalkmanOSS\SteamPlaceholder.xml"
