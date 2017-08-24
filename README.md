@@ -1,10 +1,11 @@
 # SteamPlaceholder [![Build status](https://ci.appveyor.com/api/projects/status/y315rvdlio5tp8yi)](https://ci.appveyor.com/project/Walkman100/steamplaceholder)
-A program that you can point [Steam](http://store.steampowered.com/) to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
+A program that you can point the [Steam](http://store.steampowered.com/) client to, that will start User-specified programs/games. Launch with `hideGUI` command to start minimised.
 
-[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Walkman100/Walkman?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ### Screenshot
 [![Example & Screenshot][Screenshot]][Screenshot]
+
   [Screenshot]: http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/MainWindow.png
 
 You can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. To use this with Steam, see [this screenshot](http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/ScreenshotExample.png) from v1.
@@ -18,7 +19,3 @@ It can be a good thing since if you replace the executable of a Steam game with 
 
 ## Donate
 [Show your support!](http://walkman100.github.io/Walkman/HTML/Donate.html)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/Walkman100/steamplaceholder/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
