@@ -10,6 +10,11 @@ A program that you can point the [Steam](http://store.steampowered.com/) client 
 
 You can launch a folder, you can use Forwardslashes `/` instead of the default backslash `\`, and you can enclose the entire string in double quotes `"`. To use this with Steam, see [this screenshot](http://walkman100.github.io/images/Screenshots/My_Projects/SteamPlaceholder/ScreenshotExample.png) from v1.
 
+## Download
+Get the latest version [here](https://github.com/Walkman100/SteamPlaceholder/releases), and the latest build from commit
+[here](https://ci.appveyor.com/project/Walkman100/SteamPlaceholder/build/artifacts)
+(note that these builds are built for the Debug config and so are not optimised)
+
 # Compatibility with Steam's game overlay:
 The `GameOverlayUI.exe` process that launches and attaches to games & programs launched through Steam doesn't show on this program, but if it was started through Steam, the Steam overlay will attach to any programs that are started from it. This can be both a good thing and a bad thing:
 
